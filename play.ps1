@@ -1,0 +1,1 @@
+$f=(New-TemporaryFile).FullName; $t=(($a|%{"-i $_"}) + "-filter_complex amix=inputs=$($a.Count):duration=shortest -y -f wav $f"); Start-Process ffmpeg ($t -join " ") -wait -nonewwindow; ffplay -loop -1 -f wav -i $f

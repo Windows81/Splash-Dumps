@@ -1,0 +1,1 @@
+get-content dump.txt |where{$_-match'rbx*'}|%{$_.substring(13)}|select -Skip (ls dump -File).Count|%{(iwr "https://www.roblox.com/library/$_").Content}|%{@{l=(($_|sls "data-mediathumb-url=`"([^`"]+)").Matches.Groups[1].Value);f=(($_|sls "h2>([^<]+)").Matches.Groups[1].Value)}}|%{$s="dump/"+$_.f+".ogg";iwr $_.l -outfile $s}
