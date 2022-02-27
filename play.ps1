@@ -3,6 +3,7 @@ param(
 	[Parameter(Mandatory = $false)][uint]$sr = 44100,
 	[Parameter(Mandatory = $false)][string]$fl = 'anull')
 
+$n = $n.ToUpper()
 $e = $p = @()
 $l = Get-ChildItem dump -Name "$($n)_*"
 for ($c = $q = 0; $c -lt 48; $q = 0 * $c++) {
